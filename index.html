@@ -102,6 +102,9 @@
 
     .info { color: #52525b; font-size: 0.75rem; margin-top: 0.25rem; }
     .stats { color: #52525b; font-size: 0.75rem; padding: 0.5rem 0; border-top: 1px solid #27272a; }
+    .attribution { color: #52525b; font-size: 0.75rem; text-align: center; padding: 0.75rem 0; }
+    .attribution a { color: #71717a; text-decoration: none; }
+    .attribution a:hover { color: #a1a1aa; text-decoration: underline; }
 
     .anim-section {
       border-top: 1px solid #27272a; padding: 1rem 1.25rem; margin-top: 0.5rem;
@@ -242,6 +245,11 @@
       <button class="btn btn-render" onclick="render()">🌱 Generate</button>
 
       <div class="stats" id="stats"></div>
+
+      <div class="attribution">
+        Made by <a href="https://sawyerwelden.com" target="_blank">Sawyer Welden</a>
+        · <a href="https://github.com/sawyerWeld" target="_blank">GitHub</a>
+      </div>
 
     </div>
     <div id="canvas-container"></div>
