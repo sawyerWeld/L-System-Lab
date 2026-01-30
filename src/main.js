@@ -654,8 +654,9 @@ function saveUserPresets(presets) {
 function renderUserPresets() {
   const presets = getUserPresets()
   const names = Object.keys(presets)
-  const container = document.getElementById('user-presets')
-  container.innerHTML = ''
+  const container = document.getElementById('presets')
+  // Remove old user presets
+  container.querySelectorAll('.user-preset').forEach(el => el.remove())
   for (const name of names) {
     const btn = document.createElement('div')
     btn.className = 'preset user-preset'
