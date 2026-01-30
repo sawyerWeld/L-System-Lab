@@ -359,12 +359,18 @@ function centerCamera(data) {
   if (!data) return
   const geometry = new THREE.BufferGeometry()
   geometry.setAttribute('position', new THREE.BufferAttribute(data.vertices, 3))
-  geometry.computeBoundingSphere()
-  const sphere = geometry.boundingSphere
-  if (sphere) {
-    controls.target.copy(sphere.center)
-    const dist = sphere.radius * 2.5
-    camera.position.set(sphere.center.x, sphere.center.y + dist * 0.3, sphere.center.z + dist)
+  geometry.computeBoundingBox()
+  const box = geometry.boundingBox
+  if (box) {
+    const center = new THREE.Vector3()
+    box.getCenter(center)
+    const size = new THREE.Vector3()
+    box.getSize(size)
+    const maxDim = Math.max(size.x, size.y, size.z)
+    const dist = maxDim * 1.5
+
+    controls.target.copy(center)
+    camera.position.set(center.x, center.y + dist * 0.3, center.z + dist)
     controls.update()
   }
   geometry.dispose()
